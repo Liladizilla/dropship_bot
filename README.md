@@ -55,4 +55,4 @@ Expand to Instagram & WhatsApp to get more traffic
 
 ⭐ Contribute & Support
 Want to improve the bot? Fork it & submit a pull request!
-If you like this project, give it a ⭐ on GitHub!
+If you like this project, give it a ⭐
