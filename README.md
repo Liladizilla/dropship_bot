@@ -1,82 +1,26 @@
-# Telegram Dropshipping Bot
+# Telegram Dropship Product Finder
 
-A Telegram bot that searches AliExpress products from user messages and returns the first matching product link.
+A Telegram bot that searches AliExpress and returns a candidate product listing. It is a **product discovery tool**, not an order-processing system.
 
 ## Features
-
-- Search AliExpress by keyword.
-- Return a product URL in chat.
-- Simple `Buy` command flow (demo response).
-- Script-style startup via `scripts/run.sh`.
-
-## Project Structure
-
-- `dropship_bot.py` - main bot script.
-- `config.py` - environment-based settings loader.
-- `scripts/run.sh` - one-command run script.
-- `.env.example` - environment template.
+- Search by product name.
+- Request timeout and useful network error handling.
+- Validate search length and reject non-AliExpress or non-item links.
+- Telegram polling with `/start` and `/help`.
+- Automated offline unit tests through GitHub Actions.
 
 ## Setup
-
-1. Clone repository.
-2. Create your env file:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-3. Add your Telegram token to `.env`:
-
-   ```env
-   BOT_TOKEN=your_actual_bot_token
-   ```
-
-4. Run the bot as a script:
-
-   ```bash
-   ./scripts/run.sh
-   ```
-
-## Alternative Manual Run
+1. Install Python 3.11 or newer.
+2. Create a Telegram bot with Telegram's official BotFather.
+3. Copy `.env.example` to `.env` and set `BOT_TOKEN`.
+4. Install dependencies and run:
 
 ```bash
-python3 -m pip install -r requirements.txt
-python3 dropship_bot.py
+python -m pip install -r requirements.txt
+python dropship_bot.py
 ```
 
-## Notes
+## Scope and safety
+The current bot does **not** place orders, accept payments, collect customer payment details, or guarantee prices/availability. Its HTML-based search may break when AliExpress changes its page structure. Treat results as links to inspect manually.
 
-- AliExpress HTML changes frequently, so scraping selectors may need future updates.
-- This project provides demo order messaging only and does not process payments.
-
-## Where to Edit
-
-- Main bot logic: `dropship_bot.py`
-- Environment/token settings: `.env` (copy from `.env.example`)
-- Dependency list: `requirements.txt`
-- Startup script: `scripts/run.sh`
-- Documentation: `README.md`
-
-## Sync This Project to Your GitHub
-
-If this folder is already a git repo, run:
-
-```bash
-git status
-git add .
-git commit -m "Your update message"
-git push origin <your-branch>
-```
-
-If you want to connect this local project to a new GitHub repository:
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
-
-Then open your repository on GitHub and create a Pull Request from your branch.
+Never commit `.env` or expose the Telegram token.
