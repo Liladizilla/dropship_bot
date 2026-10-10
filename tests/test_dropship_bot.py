@@ -2,7 +2,7 @@ import os
 import unittest
 from unittest.mock import Mock, patch
 
-os.environ.setdefault("BOT_TOKEN", "test-token")
+os.environ.setdefault("BOT_TOKEN", "123456:TEST_TOKEN")
 
 import dropship_bot
 
